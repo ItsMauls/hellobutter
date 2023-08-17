@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "concurrently \"postcss public/style/input.css -o public/style/output.css -w\" \"nodemon app.js\""
+    "start": "node app.js",
+    "dev": "concurrently \"postcss public/style/input.css -o public/style/output.css -w\" \"nodemon app.js\""
   },
   "keywords": [],
   "author": "",
