@@ -1,6 +1,35 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+<script src="/js/jquery.js"></script>
 </body>
-<footer class="bg-gray-700 mt-10">
-sss
+<footer id="footer" class="bg-gray-700 mt-4 p-4">
+    <h1 class="text-pink-50 font-montserrat font-bold text-4xl md:text-7xl text-center">PESAN SEKARANG JUGA!</h1>
+
+    <div class="grid md:grid-cols-2 gap-6 mt-6 ml-6">
+        <div id="instagram" class="flex items-center mx-auto">
+            <a href="https://www.instagram.com/lovehellobutter/">
+                <img src="/images/instagram.svg" alt="Hellobutter Instagram" class="rounded-xl hover:bg-pink-300">
+            </a>
+            <a href="https://www.instagram.com/lovehellobutter/">
+                <h2 class="ml-2 text-base md:text-2xl text-pink-50 font-montserrat hover:border-b-2 hover:border-b-pink-400">@lovehellobutter</h2>
+            </a>
+        </div>
+
+        <div class="items-center flex justify-center flex-col my-10">
+            <p class="text-pink-50 text-base md:text-lg font-montserrat w-full text-center mb-4 max-w-xl">
+                Beritahu Kami Hari Ulang Tahunmu Beserta Email,
+                Agar Kamu Dapat Promo Setiap Pembelian Kue Kami di Hari Ulang Tahun!
+            </p>
+            <form action="" class="flex flex-col-3 gap-4 items-center">
+                <input type="email" id="emailInput" placeholder="Masukkan Email"
+                    class="block bg-transparent border-b-2 focus:border-pink-500 focus:border-4 border-b-pink-500 border-0 border-t-0 border-r-0 border-l-0 mb-2 w-full md:w-5/6 focus:outline-none">
+                <input type="date" id="dateInput" placeholder="Tanggal Kamu"
+                    class="block bg-transparent focus:border-pink-500 focus:border-4 border-b-2 border-b-pink-500 border-0 border-t-0 border-r-0 border-l-0 mb-2 w-full md:w-5/6 focus:outline-none">
+                <button class="hover:scale-110 bg-pink-500 w-1/5 items-center border-2 hover:border-white hover:text-white border-pink-800 rounded-full font-bold text-pink-300 text-3xl text-center">></button>
+            </form>
+            
+        </div>
+    </div>
 </footer>
+
 </html>

@@ -17,6 +17,7 @@
     "express-session": "^1.17.3",
     "express-validator": "^7.0.1",
     "flowbite": "^1.8.1",
+    "jquery": "^3.7.0",
     "mongoose": "^7.4.2"
   },
   "devDependencies": {
