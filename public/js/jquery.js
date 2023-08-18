@@ -31,11 +31,5 @@ window.addEventListener('load', () => {
 animate()
 })    
 
-document.getElementById("dateInput").addEventListener("focus", function() {
-    this.type = "text";
-});
 
-document.getElementById("dateInput").addEventListener("blur", function() {
-    this.type = "date";
-});
 

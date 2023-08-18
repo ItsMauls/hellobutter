@@ -1,13 +1,16 @@
 const express = require('express')
 const app = express()
 const path = require('path')
-// const { createTransport } = require('nodemailer');
+const { createTransport } = require('nodemailer');
 
 app.set('view engine', 'ejs')
 app.set('views', 'views')
 
 const homeRoutes = require('./routes/home')
-const aboutRoutes = require('./routes/about')
+const aboutRoutes = require('./routes/about');
+const { default: mongoose } = require('mongoose');
+const MONGODB_URI = 'mongodb+srv://maulputra09:QUGj7s9BjpeqejCG@cluster0.fupzsui.mongodb.net/helloButterDB'
+
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -25,7 +28,15 @@ app.use( (error,req,res,next) => {
     .json({
         message
     })
-    next()
+  
 })
 
+mongoose.connect(MONGODB_URI)
+.then(result => {
+    console.log('Database Connected!')
 app.listen(3000)
+})
+.catch(err => {
+  console.log(err)
+})
+
