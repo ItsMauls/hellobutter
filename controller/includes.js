@@ -5,10 +5,11 @@ const transporter = createTransport({
     host: "smtp-relay.brevo.com",
     port: 587,
     auth: {
-        user: "maulputra09@gmail.com",
-        pass: "RgdKhwT8tCFQUJHm",
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
     },
-  });
+});
+
 
 exports.postEmail = async (req,res,next) => {
     const email = req.body.email
