@@ -10,7 +10,7 @@ const homeRoutes = require('./routes/home')
 const aboutRoutes = require('./routes/about');
 const { default: mongoose } = require('mongoose');
 const MONGODB_URI = 'mongodb+srv://maulputra09:QUGj7s9BjpeqejCG@cluster0.fupzsui.mongodb.net/helloButterDB'
-require('dotenv').config({ path: './.env' });
+require('dotenv').config();
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
