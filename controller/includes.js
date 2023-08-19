@@ -1,22 +1,22 @@
 const { createTransport } = require('nodemailer') 
 const userEmail = require('../models/mailer')
-
+require('dotenv').config();
 const transporter = createTransport({
     host: "smtp-relay.brevo.com",
     port: 587,
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
-    },
+    }
 });
-
+const userxx = process.env.EMAIL_USER
 
 exports.postEmail = async (req,res,next) => {
     const email = req.body.email
     const date = req.body.date
     const currentYear = new Date().getFullYear()
     const nextYear = currentYear + 1
-    
+    console.log(userxx)
     const [year, month, day] = date.split('-')
 
     try {
