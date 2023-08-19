@@ -1,13 +1,15 @@
 const { createTransport } = require('nodemailer') 
+const nodemailer = require('nodemailer')
 const userEmail = require('../models/mailer')
 require('dotenv').config();
 
-const transporter = createTransport({
+const transporter = nodemailer.createTransport({
     host: "smtp-relay.brevo.com",
-    port: 465,
+    port: 587,
     auth: {
       user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS
+      pass: process.env.EMAIL_PASS,
+      secure: true
     }
   });
 
