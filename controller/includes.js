@@ -34,12 +34,22 @@ exports.postEmail = async (req,res,next) => {
             await user.save()
         }
 
-        transporter.sendMail({
-            from: 'hallobutter@gmail.com',
-            to: email,
-            subject: 'Promo Spesial: Nikmati Diskon Menarik untuk Pembelian Kue di Hari Ulang Tahun!',
-            html : `<p>Kami sangat senang mendengar bahwa Anda akan merayakan ulang tahun Anda! Kami ingin berbagi dalam kebahagiaan Anda dengan penawaran spesial dari Hellobutter. Pada tanggal ${day}-${month}-${nextYear} kami akan memberikan diskon eksklusif untuk pembelian kue di Hari Ulang Tahun Anda. Kami berharap ini dapat menambah kesenangan pada momen spesial Anda.</p>`
-           })
+        await new Promise((resolve, reject) => {
+            transporter.sendMail({
+                from: 'hallobutter@gmail.com',
+                    to: email,
+                    subject: 'Promo Spesial: Nikmati Diskon Menarik untuk Pembelian Kue di Hari Ulang Tahun!',
+                    html : `<p>Kami sangat senang mendengar bahwa Anda akan merayakan ulang tahun Anda! Kami ingin berbagi dalam kebahagiaan Anda dengan penawaran spesial dari Hellobutter. Pada tanggal ${day}-${month}-${nextYear} kami akan memberikan diskon eksklusif untuk pembelian kue di Hari Ulang Tahun Anda. Kami berharap ini dapat menambah kesenangan pada momen spesial Anda.</p>`
+            },
+             (err, info) => {
+              if (err) {
+                console.error(err);
+                reject(err);
+              } else {
+                resolve(info);
+              }
+            });
+          });
 
         return res.redirect('/')
     }
