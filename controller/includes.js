@@ -20,15 +20,15 @@ exports.postEmail = async (req, res, next) => {
     const [year, month, day] = date.split('-');
 
     try {
-        const user = await userEmail.findOne({ email: email });
-        if (!user) {
+        const userMail = await userEmail.findOne({ email: email });
+        if (!userMail) {
             const newEmail = new userEmail({
                 email: email,
                 date: date
             });
             await newEmail.save();
         } else {
-            user.date = date;
+            userMail.date = date;
             await user.save();
         }
 
