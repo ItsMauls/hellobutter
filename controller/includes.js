@@ -29,7 +29,7 @@ exports.postEmail = async (req, res, next) => {
             await newEmail.save();
         } else {
             userMail.date = date;
-            await user.save();
+            await userMail.save();
         }
 
         const mailOptions = {
