@@ -11,7 +11,7 @@ exports.postEmail = async (req, res, next) => {
     const [year, month, day] = date.split('-');
 
     try {
-        const transporter = nodemailer.createTransport({
+        const transporter = createTransport({
             host: "smtp-relay.brevo.com",
             port: 587,
             auth: {
@@ -30,7 +30,6 @@ exports.postEmail = async (req, res, next) => {
             userMail.date = date;
             await userMail.save();
         }
-
         const mailOptions = {
             from: 'hallobutter@gmail.com',
             to: email,
