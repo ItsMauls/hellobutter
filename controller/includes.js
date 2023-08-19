@@ -9,23 +9,31 @@ const transporter = createTransport({
         pass: process.env.EMAIL_PASS,
     }
 });
-const userxx = process.env.EMAIL_USER
 
 exports.postEmail = async (req,res,next) => {
     const email = req.body.email
     const date = req.body.date
     const currentYear = new Date().getFullYear()
     const nextYear = currentYear + 1
-    console.log(userxx)
     const [year, month, day] = date.split('-')
 
     try {
-        const newEmail = new userEmail ({
-            email : email,
-            date: date
-        })
-        await newEmail.save()
-        const user = await userEmail.find({email : email}) 
+        const user = await userEmail.findOne({email : email})
+        if(!user)
+        {
+            
+            const newEmail = new userEmail
+            ({   
+                email : email,
+                date: date
+            })
+                await newEmail.save()
+        }
+        else {
+            user.date = date
+            await user.save()
+        }
+
         transporter.sendMail({
             from: 'hallobutter@gmail.com',
             to: email,

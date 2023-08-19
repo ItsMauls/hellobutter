@@ -6,7 +6,9 @@ const emailSchema = new Schema ({
         type : String
     },
     date : Date
-})
+}
+, {timestamps : true}
+)
 
 const userEmail = mongoose.model('usermail', emailSchema)
 
