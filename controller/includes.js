@@ -3,15 +3,6 @@ const nodemailer = require('nodemailer');
 const userEmail = require('../models/mailer');
 require('dotenv').config();
 
-const transporter = nodemailer.createTransport({
-    host: "smtp-relay.brevo.com",
-    port: 587,
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-    }
-});
-
 exports.postEmail = async (req, res, next) => {
     const email = req.body.email;
     const date = req.body.date;
@@ -20,6 +11,14 @@ exports.postEmail = async (req, res, next) => {
     const [year, month, day] = date.split('-');
 
     try {
+        const transporter = nodemailer.createTransport({
+            host: "smtp-relay.brevo.com",
+            port: 587,
+            auth: {
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS
+            }
+        });
         const userMail = await userEmail.findOne({ email: email });
         if (!userMail) {
             const newEmail = new userEmail({
